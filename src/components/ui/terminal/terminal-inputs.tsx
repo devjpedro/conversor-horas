@@ -18,7 +18,6 @@ export default function TerminalInputSection({
   minutes,
   onHoursChange,
   onMinutesChange,
-  onPaste,
 }: TerminalInputSectionProps) {
   return (
     <div className="space-y-4">
@@ -32,8 +31,11 @@ export default function TerminalInputSection({
           placeholder="0"
           value={hours}
           onChange={onHoursChange}
-          onPaste={onPaste}
+          aria-label="Horas"
         />
+        <span className="ml-2 text-xs text-gray-500">
+          Pressione Enter para converter
+        </span>
       </div>
 
       <div className="flex items-center">
