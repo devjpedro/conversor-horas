@@ -9,6 +9,9 @@ import TerminalConvertButton from './terminal-button'
 import TerminalResultSection from './terminal-result'
 import TerminalCursor from './terminal-cursor'
 import { useClipboard } from '@/hooks/useClipboard'
+import { toast } from 'sonner'
+import { Terminal } from 'lucide-react'
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts'
 
 export default function TerminalConverter() {
   const {
@@ -23,6 +26,31 @@ export default function TerminalConverter() {
 
   const { cursorVisible } = useCursorBlink()
   const { copied, copyToClipboard } = useClipboard()
+
+  const handleEnterConvert = () => {
+    if (!hours && !minutes) {
+      toast.error('Erro ao executar comando', {
+        description: 'Informe horas ou minutos para converter',
+        icon: <Terminal className="h-4 w-4" />,
+      })
+
+      return
+    }
+
+    convertToDecimal()
+
+    toast.success('Comando executado', {
+      description: 'Conversão realizada com sucesso',
+      icon: <Terminal className="h-4 w-4" />,
+    })
+  }
+
+  useKeyboardShortcuts({
+    onEnter: handleEnterConvert,
+    onCtrlC: decimalTime
+      ? () => copyToClipboard(decimalTime.toFixed(2))
+      : undefined,
+  })
 
   return (
     <div className="w-full max-w-2xl overflow-hidden rounded-lg border border-gray-700 shadow-lg">
