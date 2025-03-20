@@ -5,11 +5,13 @@ import { useEffect } from 'react'
 interface KeyboardShortcutsProps {
   onEnter?: () => void
   onCtrlC?: () => void
+  onCtrlK?: () => void
 }
 
 export function useKeyboardShortcuts({
   onEnter,
   onCtrlC,
+  onCtrlK,
 }: KeyboardShortcutsProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -20,6 +22,10 @@ export function useKeyboardShortcuts({
       if ((event.ctrlKey || event.metaKey) && event.key === 'c' && onCtrlC) {
         onCtrlC()
       }
+
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k' && onCtrlK) {
+        onCtrlK()
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
@@ -27,5 +33,5 @@ export function useKeyboardShortcuts({
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [onEnter, onCtrlC])
+  }, [onEnter, onCtrlC, onCtrlK])
 }

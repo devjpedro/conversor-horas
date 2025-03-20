@@ -45,7 +45,15 @@ export default function TerminalConverter() {
     })
   }
 
+  const handleK = () => {
+    toast.info('Comando secreto executado', {
+      description: 'Criado por @devjpedro',
+      icon: <Terminal className="h-4 w-4" />,
+    })
+  }
+
   useKeyboardShortcuts({
+    onCtrlK: handleK,
     onEnter: handleEnterConvert,
     onCtrlC: decimalTime
       ? () => copyToClipboard(decimalTime.toFixed(2))

@@ -150,6 +150,10 @@
   border-color: #7f1d1d !important;
 }
 
+[data-sonner-toast][data-type="info"] {
+  border-color: #a855f7 !important;
+}
+
 [data-sonner-toast][data-type="error"] [data-title] {
   color: #ef4444 !important;
 }
