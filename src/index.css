@@ -117,4 +117,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .font-mono {
+    font-family: "Geist Mono", monospace !important;
+  }
 }

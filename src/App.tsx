@@ -1,9 +1,11 @@
-import { Button } from '@/components/ui/button'
+import { Toaster } from './components/ui/sonner'
+import TerminalConverter from './components/ui/terminal'
 
 function App() {
   return (
-    <div className="flex min-h-svh flex-col items-center justify-center">
-      <Button>Click me</Button>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-900 p-4">
+      <TerminalConverter />
+      <Toaster />
     </div>
   )
 }
