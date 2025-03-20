@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { toast } from 'sonner'
+import { Terminal } from 'lucide-react'
 
 export function useClipboard() {
   const [copied, setCopied] = useState(false)
@@ -12,8 +13,9 @@ export function useClipboard() {
       navigator.clipboard.writeText(textToCopy)
       setCopied(true)
 
-      toast('Copiado!', {
+      toast.success('Comando executado', {
         description: 'Valor copiado para a área de transferência',
+        icon: <Terminal className="h-4 w-4" />,
       })
 
       setTimeout(() => {

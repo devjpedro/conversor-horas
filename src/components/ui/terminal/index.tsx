@@ -1,6 +1,5 @@
 'use client'
 
-import { useClipboard } from '@/hooks/useClipboard'
 import { useCursorBlink } from '@/hooks/useCursorBlink'
 import { useTimeConverter } from '@/hooks/useTimeConverter'
 import TerminalHeader from './terminal-header'
@@ -9,6 +8,7 @@ import TerminalInputSection from './terminal-inputs'
 import TerminalConvertButton from './terminal-button'
 import TerminalResultSection from './terminal-result'
 import TerminalCursor from './terminal-cursor'
+import { useClipboard } from '@/hooks/useClipboard'
 
 export default function TerminalConverter() {
   const {
