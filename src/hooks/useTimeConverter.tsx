@@ -1,6 +1,7 @@
 'use client'
 
 import { parseTimeString } from '@/utils/time-utils'
+import { CheckCircle } from 'lucide-react'
 import type React from 'react'
 
 import { useState } from 'react'
@@ -17,6 +18,11 @@ export function useTimeConverter() {
 
     const decimal = hoursNum + minutesNum / 60
     setDecimalTime(decimal)
+
+    toast.success('Conversão concluída', {
+      description: `${hoursNum}h${minutesNum}m = ${decimal.toFixed(2)}`,
+      icon: <CheckCircle className="h-4 w-4" />,
+    })
   }
 
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {

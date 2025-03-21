@@ -1,7 +1,6 @@
 'use client'
 
 import { useCursorBlink } from '@/hooks/useCursorBlink'
-import { useTimeConverter } from '@/hooks/useTimeConverter'
 import TerminalHeader from './terminal-header'
 import TerminalIntro from './terminal-intro'
 import TerminalInputSection from './terminal-inputs'
@@ -12,6 +11,7 @@ import { useClipboard } from '@/hooks/useClipboard'
 import { toast } from 'sonner'
 import { Terminal } from 'lucide-react'
 import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts'
+import { useTimeConverter } from '@/hooks/useTimeConverter'
 
 export default function TerminalConverter() {
   const {
@@ -84,7 +84,7 @@ export default function TerminalConverter() {
           <TerminalResultSection
             decimalTime={decimalTime}
             copied={copied}
-            onCopy={copyToClipboard}
+            onCopy={() => copyToClipboard(decimalTime.toFixed(2))}
           />
         )}
 
